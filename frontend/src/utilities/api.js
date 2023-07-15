@@ -15,7 +15,7 @@ class Api {
   };
 
   getUserInfo(token) {
-    this._headers["Authorization"] = token;
+    this._headers["Authorization"] = `Bearer ${token}`;
     return fetch(`${this._baseUrl}/users/me`, {
       method: "GET",
       headers: this._headers
