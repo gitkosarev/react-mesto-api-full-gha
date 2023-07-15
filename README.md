@@ -7,7 +7,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 158.160.71.198
+IP 158.160.71.198
 
 Frontend https://project.front.nomoredomains.xyz
 
