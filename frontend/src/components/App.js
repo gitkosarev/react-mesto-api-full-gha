@@ -101,7 +101,8 @@ function App() {
   };
 
   function initData() {
-    Promise.all([api.getUserInfo(), api.getInitialCards()])
+    const jwt = localStorage.getItem("jwt");
+    Promise.all([api.getUserInfo(jwt), api.getInitialCards()])
       .then(([userData, cardsData]) => {
         setCurrentUser(userData);
         setCards(cardsData);
