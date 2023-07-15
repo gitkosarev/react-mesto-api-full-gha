@@ -55,7 +55,7 @@ function App() {
     if (jwt) {
       auth.checkToken(jwt)
         .then((response) => {
-          onLoginComplete(response.data.email);
+          onLoginComplete(response.email);
         })
         .catch(error => {
           console.error(error);
