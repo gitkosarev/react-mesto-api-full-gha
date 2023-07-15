@@ -1,0 +1,14 @@
+.card__trash-button {
+  background-image: url(../../../images/trash-button.svg);
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: cover;
+	border: none;
+  width: 18px;
+  height: 19px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+	margin: 0;
+	padding: 0;
+}

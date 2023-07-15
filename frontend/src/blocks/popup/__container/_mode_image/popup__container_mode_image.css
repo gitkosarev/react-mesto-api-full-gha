@@ -1,0 +1,13 @@
+.popup__container_mode_image {
+  color: #FFF;
+  background-color: transparent;
+  box-shadow: none;
+  border-radius: 0;
+  width: auto;
+}
+
+@media screen and (max-width: 767px) {
+  .popup__container_mode_image {
+    margin: 0 40px;
+  }
+}

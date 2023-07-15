@@ -1,0 +1,22 @@
+.login__input {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  color: #CCC;
+  border: none;
+  border-bottom: 2px solid #CCC;
+  box-sizing: border-box;
+  background-color: #000;
+  width: 100%;
+  min-height: 27px;
+  margin: 30px 0 0;
+  padding: 0;
+}
+
+.login__input:first-child {
+  margin: 50px 0 0;
+}
+
+.login__input:focus {
+  outline: none;
+}
