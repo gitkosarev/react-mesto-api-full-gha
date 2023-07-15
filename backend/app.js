@@ -7,7 +7,6 @@ require('dotenv').config();
 
 const router = require('./routes/index');
 const { login, createUser } = require('./controllers/users');
-/* const checkCORS = require('./middlewares/cors'); */
 const auth = require('./middlewares/auth');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const NotFoundError = require('./errors/NotFoundError');
@@ -26,27 +25,6 @@ app.use(requestLogger);
 app.use(cors({
   origin: 'https://project.front.nomoredomains.xyz',
 }));
-
-/* app.use((req, res, next) => {
-  const allowedCors = [
-    'http://project.front.nomoredomains.xyz',
-    'https://project.front.nomoredomains.xyz',
-  ];
-  const { method } = req;
-  const { origin } = req.headers;
-  const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
-  const requestHeaders = req.headers['access-control-request-headers'];
-  if (method === 'OPTIONS') {
-    res.header('Access-Control-Allow-Methods', DEFAULT_ALLOWED_METHODS);
-    res.header('Access-Control-Allow-Headers', requestHeaders);
-    res.end();
-  } else {
-    if (origin && allowedCors.includes(origin)) {
-      res.header('Access-Control-Allow-Origin', origin);
-    }
-    next();
-  }
-}); */
 
 app.post('/signin', celebrate({
   body: Joi.object().keys({
