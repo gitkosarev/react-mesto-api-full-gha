@@ -1,3 +1,5 @@
+import { apiURL } from './utils.js';
+
 class Auth {
   constructor(baseUrl) {
     this._baseUrl = baseUrl;
@@ -52,5 +54,5 @@ class Auth {
 
 }
 
-const auth = new Auth("https://auth.nomoreparties.co");
+const auth = new Auth(apiURL);
 export default auth;

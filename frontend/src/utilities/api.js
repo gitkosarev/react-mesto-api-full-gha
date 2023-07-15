@@ -1,9 +1,8 @@
-import credentials from './utils.js';
+import { apiURL } from './utils.js';
 
 class Api {
-  constructor(baseUrl, cohortId, headers) {
+  constructor(baseUrl, headers) {
     this._baseUrl = baseUrl;
-    this._cohortId = cohortId;
     this._headers = headers;
   };
 
@@ -16,7 +15,7 @@ class Api {
   };
 
   getUserInfo() {
-    return fetch(`${this._baseUrl}v1/${this._cohortId}/users/me`, {
+    return fetch(`${this._baseUrl}/users/me`, {
       method: "GET",
       headers: this._headers
     })
@@ -24,7 +23,7 @@ class Api {
   };
 
   getInitialCards() {
-    return fetch(`${this._baseUrl}v1/${this._cohortId}/cards`, {
+    return fetch(`${this._baseUrl}/cards`, {
       method: "GET",
       headers: this._headers
     })
@@ -32,7 +31,7 @@ class Api {
   };
 
   updateProfile(name, about) {
-    return fetch(`${this._baseUrl}v1/${this._cohortId}/users/me`, {
+    return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
@@ -44,7 +43,7 @@ class Api {
   };
 
   saveCard(name, link) {
-    return fetch(`${this._baseUrl}v1/${this._cohortId}/cards`, {
+    return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
       headers: this._headers,
       body: JSON.stringify({
@@ -56,7 +55,7 @@ class Api {
   };
 
   deleteCard(cardId) {
-    return fetch(`${this._baseUrl}v1/${this._cohortId}/cards/${cardId}`, {
+    return fetch(`${this._baseUrl}/cards/${cardId}`, {
       method: "DELETE",
       headers: this._headers
     })
@@ -69,7 +68,7 @@ class Api {
   };
 
   putLike(cardId) {
-    return fetch(`${this._baseUrl}v1/${this._cohortId}/cards/${cardId}/likes`, {
+    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: "PUT",
       headers: this._headers
     })
@@ -77,7 +76,7 @@ class Api {
   };
 
   deleteLike(cardId) {
-    return fetch(`${this._baseUrl}v1/${this._cohortId}/cards/${cardId}/likes`, {
+    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: "DELETE",
       headers: this._headers
     })
@@ -85,7 +84,7 @@ class Api {
   };
 
   updateAvatar(link) {
-    return fetch(`${this._baseUrl}v1/${this._cohortId}/users/me/avatar`, {
+    return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
@@ -98,10 +97,8 @@ class Api {
 }
 
 const api = new Api(
-  credentials.baseUrl,
-  credentials.cohort,
+  apiURL,
   {
-    authorization: credentials.token,
     "Content-Type": "application/json"
   }
 );
