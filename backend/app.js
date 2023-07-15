@@ -6,6 +6,7 @@ require('dotenv').config();
 
 const router = require('./routes/index');
 const { login, createUser } = require('./controllers/users');
+const checkCORS = require('./middlewares/cors');
 const auth = require('./middlewares/auth');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const NotFoundError = require('./errors/NotFoundError');
@@ -20,6 +21,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(requestLogger);
+
+app.use(checkCORS);
 
 app.post('/signin', celebrate({
   body: Joi.object().keys({
