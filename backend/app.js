@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 const { celebrate, Joi, errors } = require('celebrate');
 
 require('dotenv').config();
@@ -22,7 +23,11 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(requestLogger);
 
-app.use((req, res, next) => {
+app.use(cors({
+  origin: 'https://project.front.nomoredomains.xyz',
+}));
+
+/* app.use((req, res, next) => {
   const allowedCors = [
     'http://project.front.nomoredomains.xyz',
     'https://project.front.nomoredomains.xyz',
@@ -41,7 +46,7 @@ app.use((req, res, next) => {
     }
     next();
   }
-});
+}); */
 
 app.post('/signin', celebrate({
   body: Joi.object().keys({
