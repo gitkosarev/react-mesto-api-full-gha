@@ -2,6 +2,10 @@ const statusCode = require('http2').constants;
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
+require('dotenv').config();
+
+const { NODE_ENV, JWT_SECRET } = process.env;
+
 const User = require('../models/user');
 const errorHandler = require('../middlewares/error-handler');
 const { secret } = require('../utils/constants');
@@ -40,7 +44,7 @@ const login = (req, res, next) => {
     .then((user) => {
       const token = jwt.sign(
         { _id: user._id },
-        secret,
+        NODE_ENV === 'production' ? JWT_SECRET : secret,
         { expiresIn: '7d' },
       );
       res.send({ token });
