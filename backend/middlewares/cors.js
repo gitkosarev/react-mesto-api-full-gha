@@ -1,10 +1,12 @@
-const allowedCors = [
+/* const allowedCors = [
   'https://project.front.nomoredomains.xyz',
   'localhost:3000',
-];
+]; */
 
 module.exports = (req, res, next) => {
-  const { method } = req;
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  next();
+  /* const { method } = req;
   const { origin } = req.headers;
   const requestHeaders = req.headers['access-control-request-headers'];
   if (method === 'OPTIONS') {
@@ -15,5 +17,5 @@ module.exports = (req, res, next) => {
       res.header('Access-Control-Allow-Origin', origin);
     }
     next();
-  }
+  } */
 };
