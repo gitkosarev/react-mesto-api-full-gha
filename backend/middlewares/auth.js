@@ -16,10 +16,10 @@ module.exports = (req, res, next) => {
     let payload;
     try {
       payload = jwt.verify(token, NODE_ENV === 'production' ? JWT_SECRET : secret);
+      req.user = payload;
+      next();
     } catch (err) {
       next(new UnauthorizedError('Необходима авторизация'));
     }
-    req.user = payload;
-    next();
   }
 };

@@ -10,7 +10,7 @@ module.exports.getCards = (req, res, next) => {
     .then((result) => {
       res.send(result);
     })
-    .catch((err) => errorHandler(err, res, next));
+    .catch((err) => errorHandler(err, next));
 };
 
 module.exports.getCardById = (req, res, next) => {
@@ -19,7 +19,7 @@ module.exports.getCardById = (req, res, next) => {
     .then((result) => {
       res.send(result);
     })
-    .catch((err) => errorHandler(err, res, next));
+    .catch((err) => errorHandler(err, next));
 };
 
 // METHOD: POST
@@ -30,7 +30,7 @@ module.exports.createCard = (req, res, next) => {
     .then((result) => {
       res.status(statusCode.HTTP_STATUS_CREATED).send(result);
     })
-    .catch((err) => errorHandler(err, res, next));
+    .catch((err) => errorHandler(err, next));
 };
 
 // METHOD: DELETE
@@ -46,9 +46,9 @@ module.exports.deleteCard = (req, res, next) => {
       return Card.findByIdAndRemove(cardId)
         .orFail()
         .then((removedResult) => res.send(removedResult))
-        .catch((err) => errorHandler(err, res, next));
+        .catch((err) => errorHandler(err, next));
     })
-    .catch((err) => errorHandler(err, res, next));
+    .catch((err) => errorHandler(err, next));
 };
 
 module.exports.deleteLike = (req, res, next) => {
@@ -61,7 +61,7 @@ module.exports.deleteLike = (req, res, next) => {
     .then((result) => {
       res.send(result);
     })
-    .catch((err) => errorHandler(err, res, next));
+    .catch((err) => errorHandler(err, next));
 };
 
 // METHOD: PUT
@@ -75,5 +75,5 @@ module.exports.putLike = (req, res, next) => {
     .then((result) => {
       res.send(result);
     })
-    .catch((err) => errorHandler(err, res, next));
+    .catch((err) => errorHandler(err, next));
 };

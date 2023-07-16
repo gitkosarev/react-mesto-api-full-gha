@@ -16,7 +16,7 @@ const getUsers = (req, res, next) => {
     .then((result) => {
       res.send(result);
     })
-    .catch((err) => errorHandler(err, res, next));
+    .catch((err) => errorHandler(err, next));
 };
 
 const getCurrentUser = (req, res, next) => {
@@ -25,7 +25,7 @@ const getCurrentUser = (req, res, next) => {
     .then((result) => {
       res.send(result);
     })
-    .catch((err) => errorHandler(err, res, next));
+    .catch((err) => errorHandler(err, next));
 };
 
 const getUserById = (req, res, next) => {
@@ -34,7 +34,7 @@ const getUserById = (req, res, next) => {
     .then((result) => {
       res.send(result);
     })
-    .catch((err) => errorHandler(err, res, next));
+    .catch((err) => errorHandler(err, next));
 };
 
 // METHOD: POST
@@ -49,7 +49,7 @@ const login = (req, res, next) => {
       );
       res.send({ token });
     })
-    .catch((err) => errorHandler(err, res, next));
+    .catch((err) => errorHandler(err, next));
 };
 
 const createUser = (req, res, next) => {
@@ -69,7 +69,7 @@ const createUser = (req, res, next) => {
         avatar: result.avatar,
       });
     })
-    .catch((err) => errorHandler(err, res, next));
+    .catch((err) => errorHandler(err, next));
 };
 
 // METHOD: PATCH
@@ -84,7 +84,7 @@ const updateUser = (req, res, next) => {
     .then((result) => {
       res.send(result);
     })
-    .catch((err) => errorHandler(err, res, next));
+    .catch((err) => errorHandler(err, next));
 };
 
 const updateAvatar = (req, res, next) => {
@@ -98,7 +98,7 @@ const updateAvatar = (req, res, next) => {
     .then((result) => {
       res.send(result);
     })
-    .catch((err) => errorHandler(err, res, next));
+    .catch((err) => errorHandler(err, next));
 };
 
 module.exports = {
