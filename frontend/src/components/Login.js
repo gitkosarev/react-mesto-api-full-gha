@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
 
-function Login({ updateHeaderActionCaption, handleLogin }) {
+function Login({ updateHeaderActionCaption, handleLogin, handleSignout }) {
   const [values, setValues] = useState({ email: "", password: "" });
 
   useEffect(() => {
-    const setHeaderActionCaption = () => {
-      updateHeaderActionCaption("Регистрация");
-    };
-    setHeaderActionCaption();
+    updateHeaderActionCaption("Регистрация", "/sign-up");
+    handleSignout();
   }, []);
 
   function handleChange(e) {

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 
-function Header({ isLoggedIn, email, actionCaption, handleSignout }) {
+function Header({ isLoggedIn, email, actionCaption }) {
   return (
     <header className="header">
       <Link to="/">
@@ -9,7 +9,7 @@ function Header({ isLoggedIn, email, actionCaption, handleSignout }) {
       </Link>
       <div className="header__login">
         {isLoggedIn && <p className="header__text">{email}</p>}
-        <Link onClick={handleSignout} className="header__link" to="">{actionCaption}</Link>
+        <Link className="header__link" to={actionCaption?.url}>{actionCaption?.caption}</Link>
       </div>
     </header>
   );

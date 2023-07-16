@@ -7,7 +7,7 @@ function Main({ cards, onEditAvatar, onEditProfile, onAddPlace, onCardClick, onC
 
   useEffect(() => {
     const setHeaderActionCaption = () => {
-      updateHeaderActionCaption("Выйти");
+      updateHeaderActionCaption("Выйти", "/sign-in");
     };
     setHeaderActionCaption();
   }, []);

@@ -6,7 +6,7 @@ function Register({ updateHeaderActionCaption, handleRegister }) {
 
   useEffect(() => {
     const setHeaderActionCaption = () => {
-      updateHeaderActionCaption("Войти");
+      updateHeaderActionCaption("Войти", "/sign-in");
     };
     setHeaderActionCaption();
   }, []);

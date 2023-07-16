@@ -21,7 +21,7 @@ import AddPlacePopup from './AddPlacePopup';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
-  const [headerActionCaption, setHeaderActionCaption] = React.useState("");
+  const [headerActionCaption, setHeaderActionCaption] = React.useState({ caption: "", url: "/" });
   const [userEmail, setUserEmail] = React.useState("");
   const [currentUser, setCurrentUser] = React.useState({ name: "", about: "" });
   const [cards, setCards] = React.useState([]);
@@ -96,7 +96,6 @@ function App() {
     if (isLoggedIn) {
       localStorage.removeItem("jwt");
       setIsLoggedIn(false);
-      navigate("/sign-in");
     }
   };
 
@@ -110,8 +109,8 @@ function App() {
       .catch(console.error);
   };
 
-  function handleHeaderActionCaption(caption) {
-    setHeaderActionCaption(caption);
+  function handleHeaderActionCaption(caption, url) {
+    setHeaderActionCaption({caption, url});
   };
 
   function handleEditAvatarClick() {
@@ -210,11 +209,11 @@ function App() {
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
-      <Header isLoggedIn={isLoggedIn} email={userEmail} actionCaption={headerActionCaption} handleSignout={handleSignout} />
+      <Header isLoggedIn={isLoggedIn} email={userEmail} actionCaption={headerActionCaption} />
       <Routes>
         <Route path="*" element={<PageNotFound />} />
         <Route path="/sign-up" element={<Register updateHeaderActionCaption={handleHeaderActionCaption} handleRegister={handleRegister} />} />
-        <Route path="/sign-in" element={<Login updateHeaderActionCaption={handleHeaderActionCaption} handleLogin={handleLogin} />} />
+        <Route path="/sign-in" element={<Login updateHeaderActionCaption={handleHeaderActionCaption} handleLogin={handleLogin} handleSignout={handleSignout} />} />
         <Route path="/" element={<ProtectedRoute component={Main} isLoggedIn={isLoggedIn}
           cards={cards}
           onEditAvatar={handleEditAvatarClick}
