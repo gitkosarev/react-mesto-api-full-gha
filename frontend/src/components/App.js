@@ -62,6 +62,7 @@ function App() {
           localStorage.removeItem("jwt");
         });
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function handleLogin({ email, password }) {
